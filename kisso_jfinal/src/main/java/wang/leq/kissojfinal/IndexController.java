@@ -26,6 +26,10 @@ import com.jfinal.core.Controller;
 public class IndexController extends Controller {
 
 	public void index() {
+		/*
+		 * 退出登录
+		 * SSOHelper.logout(request, response);
+		 */
 		SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
 		if ( st != null ) {
 			System.out.println(st.getUserId());
