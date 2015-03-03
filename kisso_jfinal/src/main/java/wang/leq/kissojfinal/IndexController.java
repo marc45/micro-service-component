@@ -15,7 +15,8 @@
  */
 package wang.leq.kissojfinal;
 
-import wang.leq.sso.SSOConfig;
+import wang.leq.sso.SSOToken;
+import wang.leq.sso.client.SSOHelper;
 
 import com.jfinal.core.Controller;
 
@@ -25,7 +26,10 @@ import com.jfinal.core.Controller;
 public class IndexController extends Controller {
 
 	public void index() {
-		System.out.println(SSOConfig.getLoginUrl());
+		SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
+		if ( st != null ) {
+			System.out.println(st.getUserId());
+		}
 		render("index.html");
 	}
 }

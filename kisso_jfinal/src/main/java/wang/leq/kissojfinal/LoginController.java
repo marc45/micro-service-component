@@ -17,6 +17,7 @@ package wang.leq.kissojfinal;
 
 import wang.leq.sso.LoginHelper;
 import wang.leq.sso.SSOToken;
+import wang.leq.sso.client.SSOHelper;
 
 import com.jfinal.core.Controller;
 
@@ -26,6 +27,11 @@ import com.jfinal.core.Controller;
 public class LoginController extends Controller {
 
 	public void index() {
+		SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
+		if ( st != null ) {
+			redirect("/");
+			return;
+		}
 		render("login.html");
 	}
 
