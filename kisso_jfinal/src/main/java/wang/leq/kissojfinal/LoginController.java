@@ -18,6 +18,7 @@ package wang.leq.kissojfinal;
 import wang.leq.sso.LoginHelper;
 import wang.leq.sso.SSOToken;
 import wang.leq.sso.client.SSOHelper;
+import wang.leq.sso.waf.request.WafRequestWrapper;
 
 import com.jfinal.core.Controller;
 
@@ -37,8 +38,10 @@ public class LoginController extends Controller {
 
 
 	public void post() {
-		String username = this.getPara("username");
-		String password = this.getPara("password");
+		//生成环境需要过滤sql注入
+		WafRequestWrapper req = new WafRequestWrapper(getRequest());
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
 		if ( "kisso".equals(username) && "123".equals(password) ) {
 			SSOToken st = new SSOToken();
 			st.setUserId("12306");
