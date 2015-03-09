@@ -4,7 +4,7 @@ jfinal 基于 kisso 的 sso 演示 demo
 
 （1）登录
 
-<img alt="welcome" width="800" height="500" src="http://git.oschina.net/uploads/images/2015/0309/094255_c46db250_12260.png">
+<img alt="welcome" width="800" height="500" src="http://git.oschina.net/uploads/images/2015/0309/094616_1cf45332_12260.png">
 
 （2）登录成功
 
