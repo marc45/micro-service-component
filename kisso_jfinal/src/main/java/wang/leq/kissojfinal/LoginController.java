@@ -38,13 +38,13 @@ public class LoginController extends Controller {
 
 
 	public void post() {
-		//生成环境需要过滤sql注入
+		//生产环境需要过滤sql注入
 		WafRequestWrapper req = new WafRequestWrapper(getRequest());
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		if ( "kisso".equals(username) && "123".equals(password) ) {
 			SSOToken st = new SSOToken();
-			st.setUserId("12306");
+			st.setUserId(10000L);
 			LoginHelper.authSSOCookie(getRequest(), getResponse(), st);
 			redirect("/");
 			return;

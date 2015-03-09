@@ -32,7 +32,7 @@ public class VerifyCodeController extends Controller {
 	public void index() {
 		HttpServletResponse response = getResponse();
 		try {
-			String verifyCode = VerifyCodeUtils.outputVerifyImage(85, 35, response.getOutputStream(), 4);
+			String verifyCode = VerifyCodeUtils.outputVerifyImage(170, 70, response.getOutputStream(), 4);
 			System.out.println("验证码:" + verifyCode);
 		} catch ( IOException e ) {
 			e.printStackTrace();
