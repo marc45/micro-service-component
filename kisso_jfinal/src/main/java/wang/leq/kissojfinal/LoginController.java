@@ -16,8 +16,9 @@
 package wang.leq.kissojfinal;
 
 import wang.leq.sso.LoginHelper;
-import wang.leq.sso.SSOToken;
 import wang.leq.sso.client.SSOHelper;
+import wang.leq.sso.common.IpHelper;
+import wang.leq.sso.common.util.HttpUtil;
 import wang.leq.sso.waf.request.WafRequestWrapper;
 
 import com.jfinal.core.Controller;
@@ -28,26 +29,31 @@ import com.jfinal.core.Controller;
 public class LoginController extends Controller {
 
 	public void index() {
-		SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
+		JToken st = (JToken) SSOHelper.getToken(getRequest());
 		if ( st != null ) {
 			redirect("/");
 			return;
 		}
-		render("login.html");
-	}
 
-
-	public void post() {
-		//生产环境需要过滤sql注入
-		WafRequestWrapper req = new WafRequestWrapper(getRequest());
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		if ( "kisso".equals(username) && "123".equals(password) ) {
-			SSOToken st = new SSOToken();
-			st.setUserId(10000L);
-			LoginHelper.authSSOCookie(getRequest(), getResponse(), st);
-			redirect("/");
-			return;
+		//登录
+		if ( HttpUtil.isPost(getRequest()) ) {
+			//生产环境需要过滤sql注入
+			WafRequestWrapper req = new WafRequestWrapper(getRequest());
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			if ( "kisso".equals(username) && "123".equals(password) ) {
+				//系统定义 token
+				//st = new SSOToken();
+				/**
+				 * 自定义 token
+				 */
+				st = new JToken();
+				st.setUserId(10000L);
+				st.setUserIp(IpHelper.getIpAddr(getRequest()));
+				LoginHelper.authSSOCookie(getRequest(), getResponse(), st);
+				redirect("/");
+				return;
+			}
 		}
 		render("login.html");
 	}

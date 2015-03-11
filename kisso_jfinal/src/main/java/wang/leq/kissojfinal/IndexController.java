@@ -15,7 +15,6 @@
  */
 package wang.leq.kissojfinal;
 
-import wang.leq.sso.SSOToken;
 import wang.leq.sso.client.SSOHelper;
 
 import com.jfinal.core.Controller;
@@ -30,7 +29,11 @@ public class IndexController extends Controller {
 		 * 退出登录
 		 * SSOHelper.logout(request, response);
 		 */
-		SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
+		//系统token
+		//SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
+
+		//自定义 JToken
+		JToken st = (JToken) SSOHelper.getToken(getRequest());
 		if ( st != null ) {
 			System.out.println(st.getUserId());
 		}
