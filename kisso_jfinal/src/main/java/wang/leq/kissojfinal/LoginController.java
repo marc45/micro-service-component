@@ -15,12 +15,10 @@
  */
 package wang.leq.kissojfinal;
 
-import wang.leq.sso.LoginHelper;
-import wang.leq.sso.client.SSOHelper;
-import wang.leq.sso.common.IpHelper;
-import wang.leq.sso.common.util.HttpUtil;
-import wang.leq.sso.waf.request.WafRequestWrapper;
-
+import com.baomidou.kisso.SSOHelper;
+import com.baomidou.kisso.common.IpHelper;
+import com.baomidou.kisso.common.util.HttpUtil;
+import com.baomidou.kisso.web.waf.request.WafRequestWrapper;
 import com.jfinal.core.Controller;
 
 /**
@@ -49,8 +47,8 @@ public class LoginController extends Controller {
 				 */
 				st = new JToken();
 				st.setUserId(10000L);
-				st.setUserIp(IpHelper.getIpAddr(getRequest()));
-				LoginHelper.authSSOCookie(getRequest(), getResponse(), st);
+				st.setIp(IpHelper.getIpAddr(getRequest()));
+				SSOHelper.authSSOCookie(getRequest(), getResponse(), st);
 				redirect("/");
 				return;
 			}

@@ -15,7 +15,7 @@
  */
 package wang.leq.kissojfinal;
 
-import wang.leq.sso.Token;
+import com.baomidou.kisso.Token;
 
 
 /**

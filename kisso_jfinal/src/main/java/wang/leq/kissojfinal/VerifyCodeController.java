@@ -19,8 +19,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import wang.leq.sso.common.util.VerifyCodeUtils;
-
+import com.baomidou.kisso.common.util.VerifyCodeUtils;
 import com.jfinal.core.Controller;
 
 

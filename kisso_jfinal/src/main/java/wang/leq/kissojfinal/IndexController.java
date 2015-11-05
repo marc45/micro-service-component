@@ -15,8 +15,7 @@
  */
 package wang.leq.kissojfinal;
 
-import wang.leq.sso.client.SSOHelper;
-
+import com.baomidou.kisso.SSOHelper;
 import com.jfinal.core.Controller;
 
 /**
