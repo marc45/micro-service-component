@@ -13,29 +13,30 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package wang.leq.kissojfinal;
+package com.baomidou.kisso.jfinal;
 
-import com.baomidou.kisso.SSOHelper;
-import com.jfinal.core.Controller;
+import com.baomidou.kisso.Token;
+
 
 /**
- * 首页
+ * 自定义 token
+ * <p>
+ * @author   hubin
+ * @date	 2015年3月11日 
+ * @version  1.0.0
  */
-public class IndexController extends Controller {
+public class JToken extends Token {
 
-	public void index() {
-		/*
-		 * 退出登录
-		 * SSOHelper.logout(request, response);
-		 */
-		//系统token
-		//SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
+	private long userId;
 
-		//自定义 JToken
-		JToken st = (JToken) SSOHelper.getToken(getRequest());
-		if ( st != null ) {
-			System.out.println(st.getUserId());
-		}
-		render("index.html");
+
+	public long getUserId() {
+		return userId;
 	}
+
+
+	public void setUserId( long userId ) {
+		this.userId = userId;
+	}
+
 }

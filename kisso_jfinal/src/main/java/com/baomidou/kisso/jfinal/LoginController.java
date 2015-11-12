@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package wang.leq.kissojfinal;
+package com.baomidou.kisso.jfinal;
 
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.common.IpHelper;
@@ -28,22 +28,24 @@ public class LoginController extends Controller {
 
 	public void index() {
 		JToken st = (JToken) SSOHelper.getToken(getRequest());
-		if ( st != null ) {
+		if (st != null) {
 			redirect("/");
 			return;
 		}
 
-		//登录
-		if ( HttpUtil.isPost(getRequest()) ) {
-			//生产环境需要过滤sql注入
+		/**
+		 * 登录 生产环境需要过滤sql注入
+		 */
+		if (HttpUtil.isPost(getRequest())) {
 			WafRequestWrapper req = new WafRequestWrapper(getRequest());
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			if ( "kisso".equals(username) && "123".equals(password) ) {
-				//系统定义 token
-				//st = new SSOToken();
+			if ("kisso".equals(username) && "123".equals(password)) {
 				/**
-				 * 自定义 token
+				 * 系统定义 SSOToken st = new SSOToken();
+				 * <p>
+				 * 自定义 JToken
+				 * </p>
 				 */
 				st = new JToken();
 				st.setUserId(10000L);

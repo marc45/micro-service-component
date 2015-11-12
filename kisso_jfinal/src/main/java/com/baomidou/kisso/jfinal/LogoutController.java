@@ -13,30 +13,31 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package wang.leq.kissojfinal;
+package com.baomidou.kisso.jfinal;
 
-import com.baomidou.kisso.Token;
-
+import com.baomidou.kisso.SSOHelper;
+import com.jfinal.core.Controller;
 
 /**
- * 自定义 token
- * <p>
- * @author   hubin
- * @date	 2015年3月11日 
- * @version  1.0.0
+ * 登录
  */
-public class JToken extends Token {
+public class LogoutController extends Controller {
 
-	private long userId;
-
-
-	public long getUserId() {
-		return userId;
+	/**
+	 * 退出登录
+	 */
+	public void index() {
+		/**
+		 * <p>
+		 * SSO 退出，清空退出状态即可
+		 * </p>
+		 * 
+		 * <p>
+		 * 子系统退出 SSOHelper.logout(request, response); 注意 sso.properties 包含 退出到
+		 * SSO 的地址 ， 属性 sso.logout.url 的配置
+		 * </p>
+		 */
+		SSOHelper.loginClear(getRequest(), getResponse());
+		redirect("login");
 	}
-
-
-	public void setUserId( long userId ) {
-		this.userId = userId;
-	}
-
 }

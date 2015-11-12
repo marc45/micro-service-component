@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package wang.leq.kissojfinal;
+package com.baomidou.kisso.jfinal;
 
 import java.io.IOException;
 
@@ -22,18 +22,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.baomidou.kisso.common.util.VerifyCodeUtils;
 import com.jfinal.core.Controller;
 
-
 /**
  * 验证码
  */
 public class VerifyCodeController extends Controller {
 
+	/**
+	 * 验证码
+	 */
 	public void index() {
 		HttpServletResponse response = getResponse();
 		try {
 			String verifyCode = VerifyCodeUtils.outputVerifyImage(170, 70, response.getOutputStream(), 4);
 			System.out.println("验证码:" + verifyCode);
-		} catch ( IOException e ) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		renderNull();
