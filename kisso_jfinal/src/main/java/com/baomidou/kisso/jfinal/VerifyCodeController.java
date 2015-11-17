@@ -19,7 +19,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.baomidou.kisso.common.util.VerifyCodeUtils;
+import com.baomidou.kisso.common.util.ImageCaptchaUtil;
 import com.jfinal.core.Controller;
 
 /**
@@ -33,7 +33,7 @@ public class VerifyCodeController extends Controller {
 	public void index() {
 		HttpServletResponse response = getResponse();
 		try {
-			String verifyCode = VerifyCodeUtils.outputVerifyImage(170, 70, response.getOutputStream(), 4);
+			String verifyCode = ImageCaptchaUtil.outputImage(response.getOutputStream(), 170, 70, 4);
 			System.out.println("验证码:" + verifyCode);
 		} catch (IOException e) {
 			e.printStackTrace();
