@@ -36,7 +36,7 @@ public class VerifyCodeController extends Controller {
 		HttpServletResponse response = getResponse();
 		try {
 			String verifyCode = ImageCaptchaUtil.outputImage(response.getOutputStream(), new Color(38, 165, 238), "Verdana", Font.PLAIN,
-				85, 35, 4);
+				170, 60, 4);
 			System.out.println("验证码:" + verifyCode);
 		} catch (IOException e) {
 			e.printStackTrace();
