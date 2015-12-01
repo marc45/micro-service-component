@@ -15,13 +15,10 @@
  */
 package com.baomidou.kisso.jfinal;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.baomidou.kisso.common.util.ImageCaptchaUtil;
 import com.jfinal.core.Controller;
 
 /**
@@ -35,8 +32,7 @@ public class VerifyCodeController extends Controller {
 	public void index() {
 		HttpServletResponse response = getResponse();
 		try {
-			String verifyCode = ImageCaptchaUtil.outputImage(response.getOutputStream(), new Color(38, 165, 238), "Verdana", Font.PLAIN,
-				170, 60, 4);
+			String verifyCode = CaptchaUtil.outputImage(response.getOutputStream());
 			System.out.println("验证码:" + verifyCode);
 		} catch (IOException e) {
 			e.printStackTrace();
