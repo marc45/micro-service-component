@@ -2,6 +2,11 @@
 
 jfinal 基于 kisso 的 sso 演示 demo
 
+> 技术讨论 QQ 群 492238239 
+
+http://baomidou.com/
+
+http://www.oschina.net/p/kisso
 
 [kisso 依赖 jars](http://git.oschina.net/juapk/kisso-deplibs)
 
