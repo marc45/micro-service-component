@@ -8,15 +8,15 @@ http://baomidou.com/
 
 http://www.oschina.net/p/kisso
 
-[kisso 依赖 jars](http://git.oschina.net/juapk/kisso-deplibs)
+[kisso 依赖 jars](http://git.oschina.net/juapk/kisso/wikis/kisso-%E4%BE%9D%E8%B5%96%E5%8C%85-jars)
 
-[kisso 验证码字体](http://git.oschina.net/juapk/kisso-files/tree/master/kisso-files/font)
-
-[kisso_JFinal 演示 demo](http://git.oschina.net/juapk/kisso_jfinal)
+[kisso_Jfinal 演示 demo](http://git.oschina.net/juapk/kisso_jfinal)
 
 [kisso_SpringMvc 演示 demo](http://git.oschina.net/juapk/kisso_springmvc)
 
 [kisso_crossdomain 跨域演示 demo](http://git.oschina.net/juapk/kisso_crossdomain)
+
+[kisso_SpringMvc 演示 demo SpringMvc4.1.4 框架 ](http://git.oschina.net/juapk/SpringMvc4.1.4)
 
 
 （1）登录
