@@ -10,11 +10,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>kisso</artifactId>
-			<version>3.2</version>
-		</dependency>
-		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
 			<version>1.9</version>
@@ -30,13 +25,25 @@
 			  <version>2.3</version>
 			  <scope>compile</scope>
 		</dependency>
-		
-		<!-- fastjson -->
+
+		<!-- kisso begin -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>kisso</artifactId>
+			<version>3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk14</artifactId>
+			<version>1.50</version>
+		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.6</version>
 		</dependency>
+		<!-- kisso end -->
+		
 	</dependencies>
 
 	<build>
