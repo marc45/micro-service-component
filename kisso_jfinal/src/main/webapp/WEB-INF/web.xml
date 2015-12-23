@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     
-   	<!-- kisso -->
+   	<!-- kisso 初始化 这里使用 KissoJfinalPlugin 插件初始化
 	<context-param>
 		<param-name>kissoConfigLocation</param-name>
 		<param-value>classpath:sso.properties</param-value>
@@ -11,8 +11,9 @@
     <listener>
         <listener-class>com.baomidou.kisso.web.KissoConfigListener</listener-class>
     </listener>
-    	
-	<!-- SSOFilter -->
+    -->
+    
+	<!-- SSOFilter 这里使用 SSOJfinalInterceptor 拦截
 	<filter>
 		<filter-name>SSOFilter</filter-name>
 		<filter-class>com.baomidou.kisso.web.filter.SSOFilter</filter-class>
@@ -25,6 +26,7 @@
 		<filter-name>SSOFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	-->
 	
     <!-- jfinal -->
     <filter>

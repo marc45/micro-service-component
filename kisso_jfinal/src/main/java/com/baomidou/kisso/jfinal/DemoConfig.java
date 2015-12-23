@@ -15,6 +15,7 @@
  */
 package com.baomidou.kisso.jfinal;
 
+import com.baomidou.kisso.web.KissoJfinalPlugin;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -55,8 +56,11 @@ public class DemoConfig extends JFinalConfig {
 	 * 配置插件
 	 */
 	@Override
-	public void configPlugin(Plugins arg0) {
-
+	public void configPlugin(Plugins plugins) {
+		
+		//kisso 初始化
+		plugins.add(new KissoJfinalPlugin());
+		
 	}
 
 	/**

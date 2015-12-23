@@ -37,7 +37,7 @@ public class LogoutController extends Controller {
 		 * SSO 的地址 ， 属性 sso.logout.url 的配置
 		 * </p>
 		 */
-		SSOHelper.loginClear(getRequest(), getResponse());
+		SSOHelper.clearLogin(getRequest(), getResponse());
 		redirect("login");
 	}
 }

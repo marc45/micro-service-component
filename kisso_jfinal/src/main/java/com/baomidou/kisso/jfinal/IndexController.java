@@ -16,11 +16,18 @@
 package com.baomidou.kisso.jfinal;
 
 import com.baomidou.kisso.SSOHelper;
+import com.baomidou.kisso.SSOToken;
+import com.baomidou.kisso.web.interceptor.SSOJfinalInterceptor;
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
 /**
  * 首页
+ * <p>
+ * SSOJfinalInterceptor 登录权限拦截
+ * </p>
  */
+@Before(SSOJfinalInterceptor.class)
 public class IndexController extends Controller {
 
 	/**
@@ -40,15 +47,22 @@ public class IndexController extends Controller {
 		/*
 		 * 退出登录 SSOHelper.logout(request, response);
 		 */
-		// 系统token
-		// SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
-
 		/*
-		 * 自定义 JToken
+		 * <p>
+		 * SSOHelper.getToken(request)
+		 * 
+		 * 从 Cookie 解密 token 使用场景，拦截器
+		 * </p>
+		 * 
+		 * <p>
+		 * SSOHelper.attrToken(request)
+		 * 
+		 * 非拦截器使用减少二次解密
+		 * </p>
 		 */
-		JToken st = (JToken) SSOHelper.getToken(getRequest());
+		SSOToken st = (SSOToken) SSOHelper.attrToken(getRequest());
 		if (st != null) {
-			System.err.println(" 登录用户ID : " + st.getUserId());
+			System.err.println(" 登录用户ID : " + st.getUid());
 		}
 		render("index.html");
 	}
