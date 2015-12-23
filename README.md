@@ -19,6 +19,11 @@ http://www.oschina.net/p/kisso
 [kisso_SpringMvc 演示 demo SpringMvc4.1.4 框架 ](http://git.oschina.net/juapk/SpringMvc4.1.4)
 
 
+捐赠 kisso
+====================
+
+![捐赠 kisso](http://git.oschina.net/uploads/images/2015/1222/211207_0acab44e_12260.png "支持一下kisso")
+
 （1）登录
 
 <img alt="welcome" width="800" height="500" src="http://git.oschina.net/uploads/images/2015/0309/094616_1cf45332_12260.png">
