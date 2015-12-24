@@ -39,7 +39,7 @@
                             <td width="245">
                                 <div class="valid">
                                     <input type="text" name="vcode">
-                                    <img class="vcode" src="/verify" width="85" height="35" alt="">
+                                    <img onclick="this.src=('/verify?reload='+(new Date()).getTime())" class="vcode" src="/verify" width="85" height="35" alt="">
                                 </div>
                             </td>
                             <td>

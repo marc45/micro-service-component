@@ -15,7 +15,7 @@
  */
 package com.baomidou.kisso.jfinal;
 
-import com.baomidou.kisso.web.KissoJfinalPlugin;
+import com.baomidou.kisso.plugin.KissoJfinalPlugin;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;

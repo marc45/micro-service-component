@@ -17,14 +17,14 @@ package com.baomidou.kisso.jfinal;
 
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.SSOToken;
-import com.baomidou.kisso.web.interceptor.SSOJfinalInterceptor;
+import com.baomidou.kisso.plugin.SSOJfinalInterceptor;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
 /**
  * 首页
  * <p>
- * SSOJfinalInterceptor 登录权限拦截
+ * SSOJfinalInterceptor 登录权限拦截, 你也可以自己实现
  * </p>
  */
 @Before(SSOJfinalInterceptor.class)
