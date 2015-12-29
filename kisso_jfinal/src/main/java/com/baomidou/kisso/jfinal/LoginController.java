@@ -15,8 +15,8 @@
  */
 package com.baomidou.kisso.jfinal;
 
+import com.baomidou.kisso.MyToken;
 import com.baomidou.kisso.SSOHelper;
-import com.baomidou.kisso.SSOToken;
 import com.baomidou.kisso.common.IpHelper;
 import com.baomidou.kisso.common.util.HttpUtil;
 import com.baomidou.kisso.web.waf.request.WafRequestWrapper;
@@ -28,8 +28,8 @@ import com.jfinal.core.Controller;
 public class LoginController extends Controller {
 
 	public void index() {
-		SSOToken st = (SSOToken) SSOHelper.getToken(getRequest());
-		if (st != null) {
+		MyToken mt = (MyToken) SSOHelper.getToken(getRequest());
+		if (mt != null) {
 			redirect("/");
 			return;
 		}
@@ -45,13 +45,14 @@ public class LoginController extends Controller {
 				/**
 				 * 系统定义 SSOToken st = new SSOToken();
 				 * <p>
-				 * 自定义 JToken
+				 * 自定义 MyToken
 				 * </p>
 				 */
-				st = new SSOToken();
-				st.setUid("1000");
-				st.setIp(IpHelper.getIpAddr(getRequest()));
-				SSOHelper.setSSOCookie(getRequest(), getResponse(), st, true);
+				mt = new MyToken();
+				mt.setUid("1000");
+				mt.setAbc(" MyToken abc 测试 ...");
+				mt.setIp(IpHelper.getIpAddr(getRequest()));
+				SSOHelper.setSSOCookie(getRequest(), getResponse(), mt, true);
 				redirect("/");
 				return;
 			}

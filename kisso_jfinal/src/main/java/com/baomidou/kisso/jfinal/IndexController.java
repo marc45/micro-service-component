@@ -15,8 +15,8 @@
  */
 package com.baomidou.kisso.jfinal;
 
+import com.baomidou.kisso.MyToken;
 import com.baomidou.kisso.SSOHelper;
-import com.baomidou.kisso.SSOToken;
 import com.baomidou.kisso.plugin.SSOJfinalInterceptor;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -60,9 +60,10 @@ public class IndexController extends Controller {
 		 * 非拦截器使用减少二次解密
 		 * </p>
 		 */
-		SSOToken st = (SSOToken) SSOHelper.attrToken(getRequest());
-		if (st != null) {
-			System.err.println(" 登录用户ID : " + st.getUid());
+		MyToken mt = (MyToken) SSOHelper.attrToken(getRequest());
+		if (mt != null) {
+			System.err.println(" 登录用户ID : " + mt.getUid());
+			System.err.println(" 自定义属性测试 : " + mt.getAbc());
 		}
 		render("index.html");
 	}
