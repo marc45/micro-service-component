@@ -1,5 +1,3 @@
-package com.baomidou.kisso.jfinal;
-
 /**
  * Copyright (c) 2011-2014, hubin (243194995@qq.com).
  *
@@ -15,6 +13,8 @@ package com.baomidou.kisso.jfinal;
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+package com.baomidou.kisso.jfinal;
+
 import java.awt.Color;
 import java.awt.image.BufferedImageOp;
 import java.io.IOException;
