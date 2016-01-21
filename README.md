@@ -39,3 +39,9 @@ kisso  =  cookie sso
 基于 Cookie 的 SSO 中间件，欢迎大家使用 kisso !! 
 
 http://www.oschina.net/p/kisso
+
+
+关注我
+====================
+![程序员日记](http://git.oschina.net/uploads/images/2016/0121/093728_1bc1658f_12260.png "程序员日记")
+
