@@ -30,7 +30,7 @@ public class LoginController extends Controller {
 
 	public void index() {
 		MyToken mt = (MyToken) SSOHelper.getToken(getRequest());
-		if (mt != null) {
+		if ( mt != null ) {
 			redirect("/");
 			return;
 		}
@@ -38,11 +38,11 @@ public class LoginController extends Controller {
 		/**
 		 * 登录 生产环境需要过滤sql注入
 		 */
-		if (HttpUtil.isPost(getRequest())) {
+		if ( HttpUtil.isPost(getRequest()) ) {
 			WafRequestWrapper req = new WafRequestWrapper(getRequest());
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			if ("kisso".equals(username) && "123".equals(password)) {
+			if ( "kisso".equals(username) && "123".equals(password) ) {
 				/**
 				 * 系统定义 SSOToken st = new SSOToken();
 				 * <p>
@@ -60,40 +60,47 @@ public class LoginController extends Controller {
 		}
 		render("login.html");
 	}
-	
+
+
 	/**
-   * 支持APP端登录
-   * 调用时需要为请求Header设置PLATFORM=APP
-   * 否则请求将不会被kisso处理，而直接视为jFinal的controller
-   */
-  public void auth() {
-    Res res = new Res();
-    MyToken token = (MyToken) SSOHelper.getToken(getRequest());
-    if (token != null) {
-      renderJson(res);
-      return;
-    } else {
-      if (HttpUtil.isPost(getRequest())) {
-        WafRequestWrapper req = new WafRequestWrapper(getRequest());
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        if ("admin".equals(username) && "admin".equals(password)) {
-          token = new MyToken();
-          token.setUid("1000");
-          token.setAbc(" MyToken abc 测试 ...");
-          token.setIp(IpHelper.getIpAddr(getRequest()));
-          SSOHelper.setSSOCookie(getRequest(), getResponse(), token, true);
-          res.setData("已下发Cookies至响应");
-          renderJson(res);
-          return;
-        } else {
-          renderError(401);
-          return;
-        }
-      } else {
-        renderError(401);
-        return;
-      }
-    }
-  }
+	 * <p>
+	 * 支持APP端登录
+	 * <br>
+	 * 调用时需要为请求Header设置PLATFORM=APP
+	 * 否则请求将不会被kisso处理，而直接视为jFinal的controller
+	 * </p>
+	 * 
+	 * @author 成都瘦人  lendo.du@gmail.com
+	 * 
+	 */
+	public void auth() {
+		Res res = new Res();
+		MyToken token = (MyToken) SSOHelper.getToken(getRequest());
+		if ( token != null ) {
+			renderJson(res);
+			return;
+		} else {
+			if ( HttpUtil.isPost(getRequest()) ) {
+				WafRequestWrapper req = new WafRequestWrapper(getRequest());
+				String username = req.getParameter("username");
+				String password = req.getParameter("password");
+				if ( "admin".equals(username) && "admin".equals(password) ) {
+					token = new MyToken();
+					token.setUid("1000");
+					token.setAbc(" MyToken abc 测试 ...");
+					token.setIp(IpHelper.getIpAddr(getRequest()));
+					SSOHelper.setSSOCookie(getRequest(), getResponse(), token, true);
+					res.setData("已下发Cookies至响应");
+					renderJson(res);
+					return;
+				} else {
+					renderError(401);
+					return;
+				}
+			} else {
+				renderError(401);
+				return;
+			}
+		}
+	}
 }

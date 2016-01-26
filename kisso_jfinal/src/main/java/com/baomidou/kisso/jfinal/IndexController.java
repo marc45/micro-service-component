@@ -62,16 +62,25 @@ public class IndexController extends Controller {
 		 * </p>
 		 */
 		MyToken mt = (MyToken) SSOHelper.attrToken(getRequest());
-		if (mt != null) {
+		if ( mt != null ) {
 			System.err.println(" 登录用户ID : " + mt.getUid());
 			System.err.println(" 自定义属性测试 : " + mt.getAbc());
 		}
 		render("index.html");
 	}
-	
+
+
+	/**
+	 * <p>
+	 * 支持APP端测试
+	 * </p>
+	 * 
+	 * @author 成都瘦人  lendo.du@gmail.com
+	 * 
+	 */
 	public void appTest() {
-    Res res = new Res();
-    res.setData("测试请求已成功");
-    renderJson(res);
-  }
+		Res res = new Res();
+		res.setData("测试请求已成功");
+		renderJson(res);
+	}
 }
