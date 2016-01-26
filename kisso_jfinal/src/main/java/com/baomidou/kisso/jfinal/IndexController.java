@@ -16,6 +16,7 @@
 package com.baomidou.kisso.jfinal;
 
 import com.baomidou.kisso.MyToken;
+import com.baomidou.kisso.Res;
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.plugin.SSOJfinalInterceptor;
 import com.jfinal.aop.Before;
@@ -67,4 +68,10 @@ public class IndexController extends Controller {
 		}
 		render("index.html");
 	}
+	
+	public void appTest() {
+    Res res = new Res();
+    res.setData("测试请求已成功");
+    renderJson(res);
+  }
 }
