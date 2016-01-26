@@ -16,6 +16,7 @@
 package com.baomidou.kisso.jfinal;
 
 import com.baomidou.kisso.MyToken;
+import com.baomidou.kisso.Res;
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.common.IpHelper;
 import com.baomidou.kisso.common.util.HttpUtil;
@@ -59,4 +60,40 @@ public class LoginController extends Controller {
 		}
 		render("login.html");
 	}
+	
+	/**
+   * 支持APP端登录
+   * 调用时需要为请求Header设置PLATFORM=APP
+   * 否则请求将不会被kisso处理，而直接视为jFinal的controller
+   */
+  public void auth() {
+    Res res = new Res();
+    MyToken token = (MyToken) SSOHelper.getToken(getRequest());
+    if (token != null) {
+      renderJson(res);
+      return;
+    } else {
+      if (HttpUtil.isPost(getRequest())) {
+        WafRequestWrapper req = new WafRequestWrapper(getRequest());
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        if ("admin".equals(username) && "admin".equals(password)) {
+          token = new MyToken();
+          token.setUid("1000");
+          token.setAbc(" MyToken abc 测试 ...");
+          token.setIp(IpHelper.getIpAddr(getRequest()));
+          SSOHelper.setSSOCookie(getRequest(), getResponse(), token, true);
+          res.setData("已下发Cookies至响应");
+          renderJson(res);
+          return;
+        } else {
+          renderError(401);
+          return;
+        }
+      } else {
+        renderError(401);
+        return;
+      }
+    }
+  }
 }
