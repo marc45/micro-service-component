@@ -61,7 +61,7 @@ public class IndexController extends Controller {
 		 * 非拦截器使用减少二次解密
 		 * </p>
 		 */
-		MyToken mt = (MyToken) SSOHelper.attrToken(getRequest());
+		MyToken mt = SSOHelper.attrToken(getRequest());
 		if ( mt != null ) {
 			System.err.println(" 登录用户ID : " + mt.getUid());
 			System.err.println(" 自定义属性测试 : " + mt.getAbc());
