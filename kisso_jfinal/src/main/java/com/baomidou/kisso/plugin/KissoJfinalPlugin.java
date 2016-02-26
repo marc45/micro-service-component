@@ -39,7 +39,10 @@ public class KissoJfinalPlugin implements IPlugin {
 	 * 初始化
 	 */
 	public boolean start() {
-		new WebKissoConfigurer("sso.properties").initKisso();
+		WebKissoConfigurer ssoConfig = new WebKissoConfigurer("sso.properties");
+		// 此处可以实现自己的 KISSO 插件，也可动态出入 SSO 配置属性。
+		// ssoConfig.setPluginList(pluginList);
+		ssoConfig.initKisso();
 		return true;
 	}
 
