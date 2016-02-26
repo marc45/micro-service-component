@@ -2,6 +2,10 @@
 
 jfinal 基于 kisso 的 sso 演示 demo
 
+
+[kisso 帮助文档下载](http://git.oschina.net/juapk/kisso/attach_files)
+
+
 > 技术讨论 QQ 群 492238239 
 
 http://baomidou.com/
