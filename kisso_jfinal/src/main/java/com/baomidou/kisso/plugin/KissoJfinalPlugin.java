@@ -42,6 +42,9 @@ public class KissoJfinalPlugin implements IPlugin {
 		WebKissoConfigurer ssoConfig = new WebKissoConfigurer("sso.properties");
 		// 此处可以实现自己的 KISSO 插件，也可动态注入 SSO 配置属性。
 		// ssoConfig.setPluginList(pluginList);
+		
+		//运行模式设置，可选择指定模式的配置
+		ssoConfig.setRunMode("test_mode");
 		ssoConfig.initKisso();
 		return true;
 	}

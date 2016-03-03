@@ -17,6 +17,7 @@ package com.baomidou.kisso.jfinal;
 
 import com.baomidou.kisso.MyToken;
 import com.baomidou.kisso.Res;
+import com.baomidou.kisso.SSOConfig;
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.plugin.SSOJfinalInterceptor;
 import com.jfinal.aop.Before;
@@ -66,6 +67,8 @@ public class IndexController extends Controller {
 			System.err.println(" 登录用户ID : " + mt.getUid());
 			System.err.println(" 自定义属性测试 : " + mt.getAbc());
 		}
+		
+		System.err.println(" 当前注入运行模式是：" + SSOConfig.getInstance().getRunMode());
 		render("index.html");
 	}
 
