@@ -50,6 +50,7 @@ public class LoginController extends Controller {
 				 * </p>
 				 */
 				mt = new MyToken();
+				mt.setId(1000L);
 				mt.setUid("1000");
 				mt.setAbc(" MyToken abc 测试 ...");
 				mt.setIp(IpHelper.getIpAddr(getRequest()));

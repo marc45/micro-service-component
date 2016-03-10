@@ -64,6 +64,7 @@ public class IndexController extends Controller {
 		 */
 		MyToken mt = SSOHelper.attrToken(getRequest());
 		if ( mt != null ) {
+			System.err.println(" Long 用户ID :" + mt.getId());
 			System.err.println(" 登录用户ID : " + mt.getUid());
 			System.err.println(" 自定义属性测试 : " + mt.getAbc());
 		}
