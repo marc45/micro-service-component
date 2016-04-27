@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>kisso</artifactId>
-			<version>3.6.7</version>
+			<version>3.6.8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.6</version>
+			<version>1.2.10</version>
 		</dependency>
 		<!-- kisso end -->
 		
