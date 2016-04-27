@@ -18,8 +18,8 @@ public class TestCache implements SSOCache {
 	
 	public static Map<String, Token> cache = new ConcurrentHashMap<String, Token>();
 
-	public Token get( String key ) {
-		System.out.println("缓存中获取 Token key=" + key);
+	public Token get( String key, int expires ) {
+		System.out.println("缓存中获取 Token key=" + key + ", expires=" + expires);
 		return cache.get(key);
 	}
 
