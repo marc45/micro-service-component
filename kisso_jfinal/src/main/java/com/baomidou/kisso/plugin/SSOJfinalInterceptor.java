@@ -15,12 +15,6 @@
  */
 package com.baomidou.kisso.plugin;
 
-import java.io.IOException;
-import java.util.logging.Logger;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.baomidou.kisso.SSOConfig;
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.Token;
@@ -28,16 +22,14 @@ import com.baomidou.kisso.web.interceptor.KissoAbstractInterceptor;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 /**
  * 登录权限验证
  * <p>
  * kisso jfinal 拦截器，Controller 方法调用前处理。
  * </p>
- * 
- * jfinal 拦截器不够灵活，因此写在 demo 中，方便您自己修改。
- * 
- * @author hubin
- * @Date 2015-12-23
  */
 public class SSOJfinalInterceptor extends KissoAbstractInterceptor implements Interceptor {
 
@@ -47,36 +39,33 @@ public class SSOJfinalInterceptor extends KissoAbstractInterceptor implements In
 	public void intercept( Invocation inv ) {
 		/**
 		 * 正常执行
+		 *
+		 * 一般app 还是使用 oauth2 认证
+		 *
 		 */
-		HttpServletRequest request = inv.getController().getRequest();
-		HttpServletResponse response = inv.getController().getResponse();
-		Token token = SSOHelper.getToken(request);
+		Token token = SSOHelper.getToken(inv.getController().getRequest());
 		if ( token == null ) {
-			if ( "XMLHttpRequest".equals(request.getHeader("X-Requested-With")) ) {
-				/*
-				 * Handler 处理 AJAX 请求
-				 */
-				getHandlerInterceptor().preTokenIsNullAjax(request, response);
-			} else if ( "APP".equals(request.getHeader("PLATFORM")) ) {
+			if ( "XMLHttpRequest".equals(inv.getController().getRequest().getHeader("X-Requested-With")) ) {
+				 //ajax
+				getHandlerInterceptor().preTokenIsNullAjax(inv.getController().getRequest(),  inv.getController().getResponse());
+			} else if ( "APP".equals(inv.getController().getRequest().getHeader("PLATFORM")) ) {
 				/*
 				 * Handler 处理 APP接口调用 请求
 				 * 没有修改kisso核心代码，直接使用Ajax的认证判断方式，如果未认证，返回401状态码
 				 */
-				getHandlerInterceptor().preTokenIsNullAjax(request, response);
+				getHandlerInterceptor().preTokenIsNullAjax(inv.getController().getRequest(),  inv.getController().getResponse());
 				logger.info("request from APP invoke");
 			} else {
 				try {
-					logger.fine("logout. request url:" + request.getRequestURL());
-					SSOHelper.clearRedirectLogin(request, response);
+					logger.fine("logout. request url:" + inv.getController().getRequest().getRequestURL());
+					SSOHelper.clearRedirectLogin(inv.getController().getRequest(),  inv.getController().getResponse());
 				} catch ( IOException e ) {
 					e.printStackTrace();
 				}
 			}
 		} else {
-			/*
-			 * 正常请求，request 设置 token 减少二次解密
-			 */
-			request.setAttribute(SSOConfig.SSO_TOKEN_ATTR, token);
+
+			inv.getController().setAttr(SSOConfig.SSO_TOKEN_ATTR, token);
 			inv.invoke();
 		}
 	}

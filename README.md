@@ -1,51 +1,20 @@
-#kisso_jfinal
 
-jfinal 基于 kisso 的 sso 演示 demo
-
-
-[kisso 帮助文档下载](http://git.oschina.net/juapk/kisso/attach_files)
+微服务 公共组件 含Dockerfile  
 
 
-> 技术讨论 QQ 群 492238239 
-
-http://baomidou.com/
-
-http://www.oschina.net/p/kisso
-
-[kisso 依赖 jars](http://git.oschina.net/juapk/kisso/wikis/kisso-%E4%BE%9D%E8%B5%96%E5%8C%85-jars)
-
-[kisso_Jfinal 演示 demo](http://git.oschina.net/juapk/kisso_jfinal)
-
-[kisso_SpringMvc 演示 demo](http://git.oschina.net/juapk/kisso_springmvc)
-
-[kisso_crossdomain 跨域演示 demo](http://git.oschina.net/juapk/kisso_crossdomain)
-
-[kisso_SpringMvc 演示 demo SpringMvc4.1.4 框架 ](http://git.oschina.net/juapk/SpringMvc4.1.4)
+1. sso 组件  kisso_jfinal 
 
 
-捐赠 kisso
-====================
+-待更新-
 
-![捐赠 kisso](http://git.oschina.net/uploads/images/2015/1222/211207_0acab44e_12260.png "支持一下kisso")
+2. oauth2 组件
 
-（1）登录
+3. API Gate 
 
-<img alt="welcome" width="800" height="500" src="http://git.oschina.net/uploads/images/2015/0309/094616_1cf45332_12260.png">
+4. 分布式数据库 中间件
 
-（2）登录成功
+5. 搜索服务
 
-<img alt="welcome" width="800" height="500" src="http://git.oschina.net/uploads/images/2015/0302/180138_590ee527_12260.png">
+6. hadoop 集群 快速构建
 
-Kisso
-====================
-kisso  =  cookie sso
-
-基于 Cookie 的 SSO 中间件，欢迎大家使用 kisso !! 
-
-http://www.oschina.net/p/kisso
-
-
-关注我
-====================
-![程序员日记](http://git.oschina.net/uploads/images/2016/0121/093728_1bc1658f_12260.png "程序员日记")
-
+7. 更多
