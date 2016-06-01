@@ -9,29 +9,27 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 
 
 public class MyConfig extends JbaseConfig {
-
-
 	/**
 	 * 配置插件
 	 */
 	public void configPlugin(Plugins me) {
 
-		ActiveRecordPlugin atbp = addActiveRecordPlugin(me, addDruidPlugin(me));
-
+//		ActiveRecordPlugin atbp = addActiveRecordPlugin(me, addDruidPlugin(me));
 //		_MappingKit.mapping(atbp);
 
+//		addQuartzPlugin(me);
 		addEhCachePlugin(me);
-		addQuartzPlugin(me);
+
 
 	}
-
 
 	/**
 	 * 配置全局拦截器
 	 */
 	public void configInterceptor(Interceptors me) {
 		super.configInterceptor(me);
-		me.add(new JsonExceptionInterceptor());
+
+//		me.add(new JsonExceptionInterceptor());
 	}
 
 
@@ -41,7 +39,7 @@ public class MyConfig extends JbaseConfig {
 	 */
 	public static void main(String[] args) {
 
-		JFinal.start("src/main/webapp", 2222, "/", 0);
+		JFinal.start("src/main/webapp", 8080, "/", 0);
 	}
 
 }

@@ -1,4 +1,5 @@
 
+#正式环境 记得写内网地址
 db.url  = jdbc:mysql://xx:3306/android_service?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull
 db.user =  
 db.pwd =  
